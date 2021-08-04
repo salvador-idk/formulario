@@ -103,318 +103,263 @@ p {
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </section>
     <body>
-        <div class="container">
-            <form action="/action_page.php">
-
-                <!--Numerode referencia y numero de folio sistema-->
-                <label for="NRef">No. Referencia</label> 
-                <input type="text" id="NRef" name="Numero Ref" required maxlength="21" placeholder="Referencia..."> &emsp;
-                <label for="Nfolio">No. Folio</label> 
-                <input type="text" id="Nfolio" name="Numero Folio" required maxlength="22" placeholder="Folio"> &emsp; <br>
-                <!--date-->
-
-                <input type="date" id="dt" onchange="mydate1();" hidden/>
-                <input type="text" id="ndt"  onclick="mydate();" hidden />
-                <input type="button" Value="Date" onclick="mydate();" /><br>
-
-
-                <!-- datos de quien realiza la puesta a dispocición numero de expediente linea-->
-
-                <label for="">Nuero de Expediente</label>
-                <input type="text" id="nexp" name="nexpediente" required maxlength="15" placeholder="# Expediente..."> &emsp; <br>
-
-                 <!-- anexos check box -->
-                 <input type="checkbox" id="anexA" name="anexo A" value="radio">
-                 <label for="anexo A"> Anexo A</label>
- 
-                 <input type="checkbox" id="anexB" name="anexo B" value="radio">
-                 <label for="anexo B"> Anexo B</label>
- 
-                 <input type="checkbox" id="anexC" name="anexo C" value="radio">
-                 <label for="anexo C"> Anexo C</label>
- 
-                 <input type="checkbox" id="anexD" name="anexo D" value="radio">
-                 <label for="anexo D"> Anexo D</label>
- 
-                 <input type="checkbox" id="anexE" name="anexo E" value="radio">
-                 <label for="anexo E"> Anexo E</label>
- 
-                 <input type="checkbox" id="anexF" name="anexo F" value="radio">
-                 <label for="anexo F"> Anexo F</label>
- 
-                 <input type="checkbox" id="anexG" name="anexo G" value="radio">
-                 <label for="anexo G"> Anexo G</label>
-                 
-                 <input type="checkbox" id="Nanex" name="Nanex" value="radio">
-                 <label for="Nanex">No se entregan anexos</label><br>
-                 <br>
-                 <br>
+        <div class="container bg-red">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col">
+        
+          <form action="generarPDF.php" method="POST">
+            <div class="form-check">
+              <label class="form-check-label" for="anexoA">Incluir anexo A</label> &emsp;
+              <input type="checkbox" name="anexoA" id="anexoA" class="form-check-input" onchange="seleccion(1);">&emsp;              
+            <!--</div>
+            <div class="form-check">-->
+              <label class="form-check-label" for="anexoB">Incluir anexo B</label> &emsp;
+              <input type="checkbox" name="anexoB" id="anexoB" class="form-check-input"  onchange="seleccion(2);">&emsp;
+             
+            <!--</div>
+            <div class="form-check">-->
+              <label class="form-check-label" for="anexoC">Incluir anexo C</label> &emsp;
+              <input type="checkbox" name="anexoC" id="anexoC" class="form-check-input"  onchange="seleccion(3);">&emsp;
+            <!--</div>
+            <div class="form-check">-->
+              <label class="form-check-label" for="anexoD">Incluir anexo D</label> &emsp;
+              <input type="checkbox" name="anexoD" id="anexoD" class="form-check-input"  onchange="seleccion(4);">&emsp;
+            <!--</div>
+            <div class="form-check">-->
+              <label class="form-check-label" for="anexoE">Incluir anexo E</label> &emsp;
+              <input type="checkbox" name="anexoE" id="anexoE" class="form-check-input"  onchange="seleccion(5);">&emsp;
+            <!--</div>
+            <div class="form-check">-->
+              <label class="form-check-label" for="anexoF">Incluir anexo F</label> &emsp;
+              <input type="checkbox" name="anexoF" id="anexoF" class="form-check-input"  onchange="seleccion(6);">&emsp;
+           <!-- </div>
+            <div class="form-check">-->
+              <label class="form-check-label" for="anexoG">Incluir anexo G</label> &emsp;
+              <input type="checkbox" name="anexoG" id="anexoG" class="form-check-input"  onchange="seleccion(7);">&emsp;<br><br>
 
 
-                 <!-- anexos documentacion complementaría -->
-                 <input type="checkbox" id="si_id" name="sicb" value="radio"> &emsp;
-                 <label for="sicb">Sí</label>
- 
-                 <input type="checkbox" id="no_id" name="nocb" value="radio"> &emsp;
-                 <label for="nocb">No</label>
- 
-                 <input type="checkbox" id="photo_id" name="fotogra" value="radio"> &emsp;
-                 <label for="fotogra"> Fotografía</label>
- 
-                 <input type="checkbox" id="vid_id" name="video" value="radio"> &emsp;
-                 <label for="video">video</label>
- 
-                 <input type="checkbox" id="otr_id" name="otra" value="radio"> &emsp;
-                 <label for="otra">Otra</label>
- 
-                 <input type="checkbox" id="aud_id" name="audio" value="radio"> &emsp;
-                 <label for="audio">Audio</label>
- 
-                 <input type="checkbox" id="cf_id" name="certif" value="radio"> &emsp;
-                 <label for="certif">Certificados Medicos</label>
+              <label class="form-check-label" for="anexoH">Anexar Documentacion</label> &emsp;
+              <input type="checkbox" name="anexoH" id="anexoH" class="form-check-input"  onchange="seleccion(8);">&emsp;<br>
 
-                <label for="Q0">(Cuál?)</label> 
-                <input type="text" id="q0" name="Q0" placeholder="..."> &emsp;
-                 <br>
-                 <br>
-                 <br>
+              <div id="anexo8">
+                <center><p>Documentacion</p></center>
+                
+                <div class="form-group">
+                  <label class="form-check-label" for="anexoH">Fotografias</label> 
+              <input type="checkbox" name="anexoH" id="anexoH" value="1">&emsp;
 
-                 <!-- datos de quien realiza la puesta a dispocición linea-->
+              <label class="form-check-label" for="anexoH">Audio</label> 
+              <input type="checkbox" name="anexoH" id="anexoH" value="2">&emsp;
 
-                <label for="fname">Nombre</label> 
-                <input type="text" id="fname" name="nombre" placeholder="Escribe tu nombre(s)..."> &emsp;
+              <label class="form-check-label" for="anexoH">Videos</label> 
+              <input type="checkbox" name="anexoH" id="anexoH" value="3">&emsp;
 
-                <label for="Plname">Apellido Paterno</label> 
-                <input type="text" id="Plname" name="lastname_p" placeholder="Apellido Paterno.."> &emsp;
+              <label class="form-check-label" for="anexoH">Certificado Medico</label> 
+              <input type="checkbox" name="anexoH" id="anexoH" value="4">&emsp;
 
-                <label for="Mlname">Apellido Materno</label> 
-                <input type="text" id="Mlname" name="lastname_m" placeholder="Apellido Materno.."> &emsp;
-
-                <label for="adscrip">Adscripcion</label> 
-                <input type="text" id="adscip" name="adscipcion" placeholder="Adscripcion..."> &emsp;
-
-                <label for="cg">Cargo/Grado</label> 
-                <input type="text" id="cg" name="cargo-grado" placeholder="cargo/grado.."> &emsp; <br>
-                <br>
-                <br>
-                <br>
+              <label class="form-check-label" for="anexoH">Otros</label> 
+              <input type="checkbox" name="anexoH" id="anexoH" value="5">             
+                  <div class="form-group">
+                    <label for="linea22">Otros</label>
+                    <input type="text" name="linea22" id="linea22" class="form-control" maxlength="20" >
+                  </div>
+              </div> 
 
 
-                <!-- datos de quien realiza la puesta a dispocición columna-->
-              <!--  <div class="row">
-                    <div class="col-25">
-                        <label for="">Nuero de Expediente</label>
-                    </div>
-                    <div class="col-75"> 
-                        <input type="text" id="nexp" name="nexpediente" placeholder="# Expediente...">
-                    </div>  
+
+
+
+
+
+
+            </div>
+            
+            <!--Anexa documentacion complementaria-->
+            
+
+            <!--Insertar campos de formulario-->
+            <p>Apartado 1.1 Fecha y hora de la puesta a disposici&oacuten</p>
+           <div class="form-group">
+              <label for="linea1">Fecha</label>
+              <input type="date" name="linea1" id="linea1" class="form-control" >
+            </div>  
+            <div class="form-group">
+              <label for="linea2">Hr</label>
+              <input type="time" name="linea2" id="linea2" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="linea3"># Expediente</label>
+                <input type="text" name="linea3" id="linea3" class="form-control" maxlength=15 >
+              </div>             
+<!--Datos de quien realiza la puesta a disposicion-->
+<div class="form-group">
+    <label for="linea4">Primer apellido</label>
+    <input type="text" name="linea4" id="linea4" class="form-control" >
+  </div>
+  <div class="form-group">
+    <label for="linea5">Segundo apellido</label>
+    <input type="text" name="linea5" id="linea5" class="form-control" >
+  </div>
+    <div class="form-group">
+        <label for="linea6">Nombre(s)</label>
+        <input type="text" name="linea6" id="linea6" class="form-control" >
+      </div>
+      <div class="form-group">
+          <label for="linea7">Adscripci&oacuten</label>
+          <input type="text" name="linea7" id="linea7" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="linea8">Cargo/Grado</label>
+            <input type="text" name="linea8" id="linea8" class="form-control" >
+          </div>
+
+          <p>Fiscal/Autoridad que recibe la puesta a disposicion</p>
+          <div class="form-group">
+            <label for="linea9">Primer apellido</label>
+            <input type="text" name="linea9" id="linea9" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label for="linea10">Segundo apellido</label>
+            <input type="text" name="linea10" id="linea10" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label for="linea11">Nombre(s)</label>
+            <input type="text" name="linea11" id="linea11" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label for="linea12">Fiscalia/Autoridad</label>
+            <input type="text" name="linea12" id="linea12" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label for="linea13">Adscripci&oacuten</label>
+            <input type="text" name="linea13" id="linea13" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label for="linea14">Cargo</label>
+            <input type="text" name="linea14" id="linea14" class="form-control" >
+          </div>
+          <br>
+
+          
+
+          <div id="anexo1">
+            <center><p>ANEXO A</p></center>
+            <div class="form-group">
+              <label for="linea15">Detenciones</label>
+              <input type="text" name="linea15" id="linea15" class="form-control" maxlength="3" >
+            </div>
+                <div class="form-group">
+                  <label for="lineaa1">escribe primeroa</label>
+                  <input type="text" name="lineaa1" id="lineaa1" class="form-control" >
                 </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="fname">Nombre</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="fname" name="nombre" placeholder="Escribe tu nombre(s)...">
-                    </div>
+                <div class="form-group">
+                    <label for="lineaa2">escribe segundoa</label>
+                    <input type="text" name="lineaa2" id="lineaa2" class="form-control" >
+                  </div>
+              </div>
+              <br>
+
+              
+
+              <div id="anexo2">
+                <center><p>ANEXO B</p></center>
+                <div class="form-group">
+                  <label for="linea16">Informe del uso de la fuerza</label>
+                  <input type="text" name="linea16" id="linea16" class="form-control" maxlength="3" >
                 </div>
-                <div class="row">
-                    <div class="col-25">
-                      <label for="Plname">Apellido Paterno</label>
-                    </div>
-                    <div class="col-75">
-                      <input type="text" id="Plname" name="lastname_p" placeholder="Apellido Paterno..">
-                    </div>
+                <div class="form-group">
+                  <label for="lineab1">escribe primerob</label>
+                  <input type="text" name="lineab1" id="lineab1" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="lineab2">escribe segundob</label>
+                    <input type="text" name="lineab2" id="lineab2" class="form-control" >
                   </div>
-                  <div class="row">
-                    <div class="col-25">
-                      <label for="Mlname">Apellido Materno</label>
-                    </div>
-                    <div class="col-75">
-                      <input type="text" id="Mlname" name="lastname_m" placeholder="Apellido Materno..">
-                    </div>
+              </div><br>
+
+
+              <div id="anexo3">
+                <center><p>ANEXO C</p></center>
+                <div class="form-group">
+                  <label for="linea17">Inspeccion de vehiculo</label>
+                  <input type="text" name="linea17" id="linea17" class="form-control" maxlength="3" >
+                </div>
+                <div class="form-group">
+                  <label for="lineac1">escribe primeroc</label>
+                  <input type="text" name="lineac1" id="lineac1" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="lineac2">escribe segundoc</label>
+                    <input type="text" name="lineac2" id="lineac2" class="form-control" >
                   </div>
-                  <div class="row">
-                    <div class="col-25">
-                      <label for="adscrip">Adscripcion</label>
-                    </div>
-                    <div class="col-75">
-                      <input type="text" id="adscip" name="adscipcion" placeholder="Adscripcion...">
-                    </div>
+              </div><br>
+
+
+              <div id="anexo4">
+                <center><p>ANEXO D</p></center>
+                <div class="form-group">
+                  <label for="linea18">Inventario de armas y objetos</label>
+                  <input type="text" name="linea18" id="linea18" class="form-control" maxlength="3" >
+                </div>
+                <div class="form-group">
+                  <label for="linead1">escribe primerod</label>
+                  <input type="text" name="linead1" id="linead1" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="linead2">escribe segundod</label>
+                    <input type="text" name="linead2" id="linead2" class="form-control" >
                   </div>
-                  <div class="row">
-                    <div class="col-25">
-                      <label for="cg">Cargo/Grado</label>
-                    </div>
-                    <div class="col-75">
-                      <input type="text" id="cg" name="cargo-grado" placeholder="cargo/grado..">
-                    </div>
+              </div><br>
+
+
+              <div id="anexo5">
+                <center><p>ANEXO E</p></center>
+                <div class="form-group">
+                  <label for="linea19">Entrevistas</label>
+                  <input type="text" name="linea19" id="linea19" class="form-control" maxlength="3" >
+                </div>
+                <div class="form-group">
+                  <label for="lineae1">escribe primeroe</label>
+                  <input type="text" name="lineae1" id="lineae1" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="lineae2">escribe segundoe</label>
+                    <input type="text" name="lineae2" id="lineae2" class="form-control" >
                   </div>
-                  <div class="row">
-                    <div class="col-25">
-                      <label for="firm">Firma</label>
-                    </div>
-                    <div class="col-75">
-                      <input type="text" id="firm" name="firma" placeholder="...">
-                    </div>
-                    <br>
-                  </div> -->
+              </div><br>
 
-                   <!-- Fiscal autoridad que recibe la puesta a dispocición -->
+              <div id="anexo6">
+                <center><p>ANEXO F</p></center>
+                <div class="form-group">
+                  <label for="linea20">Entrega - recepci&oacuten del lugar de la intervenci&oacuten</label>
+                  <input type="text" name="linea20" id="linea20" class="form-control" maxlength="3" >
+                </div>
+                <div class="form-group">
+                  <label for="lineaf1">escribe primerof</label>
+                  <input type="text" name="lineaf1" id="lineaf1" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="lineaf2">escribe segundof</label>
+                    <input type="text" name="lineaf2" id="lineaf2" class="form-control" >
+                  </div>
+              </div><br>
 
-                <label for="fname2">Nombre</label> 
-                <input type="text" id="fname2" name="nombre2" placeholder="Escribe tu nombre(s)..."> &emsp;
-
-                <label for="Plname2">Apellido Paterno</label> 
-                <input type="text" id="Plname2" name="lastname_p2" placeholder="Apellido Paterno.."> &emsp;
-
-                <label for="Mlname2">Apellido Materno</label> 
-                <input type="text" id="Mlname2" name="lastname_m2" placeholder="Apellido Materno.."> &emsp;
-
-                <label for="adscrip2">Fiscalia/Autoridad</label> 
-                <input type="text" id="adscip2" name="adscipcion2" placeholder="Adscripcion..."> &emsp;
-
-                <label for="cg2">Cargo/Grado</label> 
-                <input type="text" id="cg2" name="cargo-grado2" placeholder="cargo/grado.."> &emsp; <br>
-                <br>
-                <br>
-                
-                <!--Sección Dos
-                    Primer Respondiente-->
-
-                 <!--Apartado 2.1 Datos de Identificación (firma nombre)-->
-
-                <!--Check box instituciones bla bla bla-->
-                
-                <input type="checkbox" id="GNcb" name="GNcb" value="radio">
-                <label for="GNcb"> Guardia Nacional</label>
-
-                <input type="checkbox" id="PFMcb" name="PFMcb" value="radio">
-                <label for="PFMcb">Policia Federal Ministerial</label> <br>
-
-                <!--check box restantes-->
-
-                <input type="checkbox" id="PMcb" name="PMcb" value="radio">
-                <label for="PMcb">Policia Ministerial</label>
-
-                <input type="checkbox" id="PMUcb" name="PMUcb" value="radio">
-                <label for="PMUcb">Policia Mando Unico</label>
-
-                <input type="checkbox" id="PEcb" name="PEcb" value="radio">
-                <label for="PEcb">Policia Estatal</label>
-
-                <input type="checkbox" id="PMuncb" name="PMuncb" value="radio">
-                <label for="PMuncb"> Policia Municipal</label>
-
-                <label for="OtAutcb">Otra autoridad</label> 
-                <input type="text" id="OtAutcb" name="OtAutcb" placeholder=" "> &emsp; <br>
-                <br>
-                <br>
-
-                <!--3era seccion del 2.1-->
-
-                <label for="Questn1">Cuál es su grado o cargo?</label> 
-                <input type="text" id="Questn1" name="Questn1" placeholder=" "> &emsp; <br>
-
-                <label for="Questn2">En que unidad arribo...?</label> 
-                <input type="text" id="Questn2" name="Questn2" placeholder=" "> &emsp;
-
-                <input type="checkbox" id="NAcb" name="NAcb" value="radio">
-                <label for="NAcb">No Aplica</label> <br>
-
-                <label for="Questn3">Arribó maś de un...?</label> 
-                <input type="checkbox" id="Q3cb" name="Q3cb" value="radio">
-                <label for="Q3cb">Sí</label>
-
-                <label for="Questn4"> Cuantos?</label> 
-                <input type="text" id="Questn4" name="Questn4" required maxlength="3" placeholder=" "> &emsp; 
-                
-                <input type="checkbox" id="Nocb_id" name="Nocb" value="radio">
-                <label for="Nocb">No</label>
-                <br>
-                <br>
-                <br>
-
-                <!--3. Conocimiento del hecho y bla bla bla-->
-                <!--3.1 bla bla bla-->
-                <h3 style = "font-family: 'Courier New', Courier, monospace;">Cómo se enteró del hecho?</h3>
-                 <!--check box-->
-
-                <input type="checkbox" id="PMcb" name="PMcb" value="radio">
-                <label for="PMcb">Denuncia</label>
-
-                <input type="checkbox" id="PMUcb" name="PMUcb" value="radio">
-                <label for="PMUcb">llamada de Emergencia</label>
-
-                <input type="checkbox" id="PEcb" name="PEcb" value="radio">
-                <label for="PEcb">Flagrancia</label>
-
-                <input type="checkbox" id="PMuncb" name="PMuncb" value="radio">
-                <label for="PMuncb">Descubrimiento</label>
-
-                <input type="checkbox" id="PMcb" name="PMcb" value="radio">
-                <label for="PMcb">Localización</label>
-
-                <input type="checkbox" id="PMUcb" name="PMUcb" value="radio">
-                <label for="PMUcb">Aportación</label>
-
-                <input type="checkbox" id="PEcb" name="PEcb" value="radio">
-                <label for="PEcb">Mandamiento Judicial</label>
-                <br>
-                <label for="911_id">911 No.</label> 
-                <input type="text" id="911_id" name="911" required maxlength="23" placeholder=" "> &emsp;
-                <a style="font-size: smaller;">solo en caso de contar con el</a> 
-                <br>
-                <br>
-                <br>
-
-                <!--3.2 fecha y  horas seguimiento de la actuación de la segur-->
-
-                <!--4. Lugar de la interv-->
-                <!--4.1 ubicación geografica-->
-                
-                <label for="txtcalle_id">Calle/Tramo carretero</label> &emsp;
-                <input type="text" id="txtcalle_id" name="calletramo" placeholder=" "> 
-                <br>
-                <label for="next_id">No.Exterior</label> &emsp;
-                <input type="text" id="next_id" name="numext" placeholder=" "> 
-
-                <label for="nint_id">No. Interior</label> &emsp;
-                <input type="text" id="nint_id" name="numint" placeholder=" ">
-
-                <label for="cp_id">Código Postal</label> &emsp;
-                <input type="text" id="cp_id" name="calletramo" required maxlength="5" placeholder=" ">
-                <br>
-                <label for="col_id">Colonia/Localidad</label> 
-                <input type="text" id="col_id" name="colonia" placeholder=" ">
-                <br>
-
-                <label for="mun_id">Municipio/Demarcación Territorial</label> 
-                <input type="text" id="mun_id" name="municipio" placeholder=" "> &emsp;
-
-                <label for="ef_id">Entidad Federativa</label> 
-                <input type="text" id="ef_id" name="entidad" placeholder=" "> &emsp;
-
-                <label for="ref_id">Refereencias</label> 
-                <input type="text" id="ref_id" name="referencia" placeholder=" ">
-                <br>
-                <br>
-                <!--segunda parte del 4.1-->
-                <h6>Anote las coordenadas geo...</h6>
-                <label for="latc_id">Latitud</label> 
-                <input type="text" id="latc_id" name="coordenada" required maxlength="2" placeholder=" "> <a>.</a>
-
-                <input type="text" id="latc_id2" name="coordenada" required maxlength="7" placeholder=" "> &emsp;
-                
-                <label for="lonc_id">Longitud</label> 
-                <input type="text" id="lonc_id" name="coordenada" required maxlength="2" placeholder=" "> <a>.</a>
-
-                <input type="text" id="lonc2_id" name="coordenada" required maxlength="7" placeholder=" ">
-
-                <!--Apartado 4.2-->
-                <label>Realizó la inspección del lugar?</label>
-                <input type="checkbox" id="PEcb" name="PEcb" value="radio">
-                <label for="PEcb">Mandamiento Judicial</label>
-
+              <div id="anexo7">
+                <center><p>ANEXO G</p></center>
+                <div class="form-group">
+                  <label for="linea21">Continuaci&oacuten de la narrativa de los echos y/o entrevista</label>
+                  <input type="text" name="linea21" id="linea21" class="form-control" maxlength="3" >
+                </div>
+                <div class="form-group">
+                  <label for="lineag1">escribe primerog</label>
+                  <input type="text" name="lineag1" id="lineag1" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="lineag2">escribe segundog</label>
+                    <input type="text" name="lineag2" id="lineag2" class="form-control" >
+                  </div>
+              </div>
 
 
                 
