@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" content="device-width", initial-scale="1">
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            input[type=text], select, textarea {
+                width: 100%
+                padding 12px
+                border 1px solid #ccc
+                border-radius 4px
+                resize vertical
+            }
+
+            label{
+                padding: 12px 12px 12px 0;
+                display: inline-block;
+            }
+
+            input[type="submit"]{
+                background-color: darkgoldenrod;
+                color: black;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                float: right;
+            }
+
+            input[type=submit] :hover{
+                background-color: darkcyan;
+            }
+
+            .container {
+                border-radius: 4px;
+                background-color: beige;
+                padding : 20px;
+            }
+            .col-25 {
+                float: left;
+                width: 25%;
+                margin-top: 6px;
+            }
+            .col-75{
+                float: left;
+                width: 75%;
+                margin-top: 6px;
+            }
+            .row:after{
+                content: "";
+                display: table;
+                clear: both;
+            }
+            @media screen and (max-width: 600px) {
+                .col-25, .col-75, input[type=submit]{
+                    width: 100%;
+                    margin-top: 0;
+                }
+            }
+
+            @import url(https://fonts.googleapis.com/css?family=Lato:400,300,100,700,900);
+/*
+Header style
+*/
+
+h1,
+p,
+a{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato';
+}
+
+h1 {
+  font-size: 2.8em;
+  padding: 10px 0;
+  font-weight: 800;
+}
+
+p {
+  font-size: 1.1em;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.header {
+  width: 100%;
+  padding:60px 0;
+  text-align: center;
+  background-image: url(https://3.bp.blogspot.com/-if-PaYDQs5E/W6kJf-zBYKI/AAAAAAAAGaM/ymgHhH8LWiAt4I3f81k8SUhU_7xe3QAbwCPcBGAYYCw/s640/maxresdefault.jpg)
+  ,linear-gradient(to bottom, white, black);
+  background-blend-mode: multiply;
+  color: white;
+}
+
+
+        </style>
+    </head>
+    <section class="header">
+        <h1>view</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </section>
+    <body>
+        <div class="container">
+            <form action="/action_page.php">
+
+                <!--Numerode referencia y numero de folio sistema-->
+                <label for="NRef">No. Referencia</label> 
+                <input type="text" id="NRef" name="Numero Ref" required maxlength="21" placeholder="Referencia..."> &emsp;
+                <label for="Nfolio">No. Folio</label> 
+                <input type="text" id="Nfolio" name="Numero Folio" required maxlength="22" placeholder="Folio"> &emsp; <br>
+                <!--date-->
+
+                <input type="date" id="dt" onchange="mydate1();" hidden/>
+                <input type="text" id="ndt"  onclick="mydate();" hidden />
+                <input type="button" Value="Date" onclick="mydate();" /><br>
+
+
+                <!-- datos de quien realiza la puesta a dispocición numero de expediente linea-->
+
+                <label for="">Nuero de Expediente</label>
+                <input type="text" id="nexp" name="nexpediente" required maxlength="15" placeholder="# Expediente..."> &emsp; <br>
+
+                 <!-- anexos check box -->
+                 <input type="checkbox" id="anexA" name="anexo A" value="radio">
+                 <label for="anexo A"> Anexo A</label>
+ 
+                 <input type="checkbox" id="anexB" name="anexo B" value="radio">
+                 <label for="anexo B"> Anexo B</label>
+ 
+                 <input type="checkbox" id="anexC" name="anexo C" value="radio">
+                 <label for="anexo C"> Anexo C</label>
+ 
+                 <input type="checkbox" id="anexD" name="anexo D" value="radio">
+                 <label for="anexo D"> Anexo D</label>
+ 
+                 <input type="checkbox" id="anexE" name="anexo E" value="radio">
+                 <label for="anexo E"> Anexo E</label>
+ 
+                 <input type="checkbox" id="anexF" name="anexo F" value="radio">
+                 <label for="anexo F"> Anexo F</label>
+ 
+                 <input type="checkbox" id="anexG" name="anexo G" value="radio">
+                 <label for="anexo G"> Anexo G</label>
+                 
+                 <input type="checkbox" id="Nanex" name="Nanex" value="radio">
+                 <label for="Nanex">No se entregan anexos</label><br>
+                 <br>
+                 <br>
+
+
+                 <!-- anexos documentacion complementaría -->
+                 <input type="checkbox" id="si_id" name="sicb" value="radio"> &emsp;
+                 <label for="sicb">Sí</label>
+ 
+                 <input type="checkbox" id="no_id" name="nocb" value="radio"> &emsp;
+                 <label for="nocb">No</label>
+ 
+                 <input type="checkbox" id="photo_id" name="fotogra" value="radio"> &emsp;
+                 <label for="fotogra"> Fotografía</label>
+ 
+                 <input type="checkbox" id="vid_id" name="video" value="radio"> &emsp;
+                 <label for="video">video</label>
+ 
+                 <input type="checkbox" id="otr_id" name="otra" value="radio"> &emsp;
+                 <label for="otra">Otra</label>
+ 
+                 <input type="checkbox" id="aud_id" name="audio" value="radio"> &emsp;
+                 <label for="audio">Audio</label>
+ 
+                 <input type="checkbox" id="cf_id" name="certif" value="radio"> &emsp;
+                 <label for="certif">Certificados Medicos</label>
+
+                <label for="Q0">(Cuál?)</label> 
+                <input type="text" id="q0" name="Q0" placeholder="..."> &emsp;
+                 <br>
+                 <br>
+                 <br>
+
+                 <!-- datos de quien realiza la puesta a dispocición linea-->
+
+                <label for="fname">Nombre</label> 
+                <input type="text" id="fname" name="nombre" placeholder="Escribe tu nombre(s)..."> &emsp;
+
+                <label for="Plname">Apellido Paterno</label> 
+                <input type="text" id="Plname" name="lastname_p" placeholder="Apellido Paterno.."> &emsp;
+
+                <label for="Mlname">Apellido Materno</label> 
+                <input type="text" id="Mlname" name="lastname_m" placeholder="Apellido Materno.."> &emsp;
+
+                <label for="adscrip">Adscripcion</label> 
+                <input type="text" id="adscip" name="adscipcion" placeholder="Adscripcion..."> &emsp;
+
+                <label for="cg">Cargo/Grado</label> 
+                <input type="text" id="cg" name="cargo-grado" placeholder="cargo/grado.."> &emsp; <br>
+                <br>
+                <br>
+                <br>
+
+
+                <!-- datos de quien realiza la puesta a dispocición columna-->
+              <!--  <div class="row">
+                    <div class="col-25">
+                        <label for="">Nuero de Expediente</label>
+                    </div>
+                    <div class="col-75"> 
+                        <input type="text" id="nexp" name="nexpediente" placeholder="# Expediente...">
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">Nombre</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="fname" name="nombre" placeholder="Escribe tu nombre(s)...">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="Plname">Apellido Paterno</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="Plname" name="lastname_p" placeholder="Apellido Paterno..">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="Mlname">Apellido Materno</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="Mlname" name="lastname_m" placeholder="Apellido Materno..">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="adscrip">Adscripcion</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="adscip" name="adscipcion" placeholder="Adscripcion...">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="cg">Cargo/Grado</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="cg" name="cargo-grado" placeholder="cargo/grado..">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="firm">Firma</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="firm" name="firma" placeholder="...">
+                    </div>
+                    <br>
+                  </div> -->
+
+                   <!-- Fiscal autoridad que recibe la puesta a dispocición -->
+
+                <label for="fname2">Nombre</label> 
+                <input type="text" id="fname2" name="nombre2" placeholder="Escribe tu nombre(s)..."> &emsp;
+
+                <label for="Plname2">Apellido Paterno</label> 
+                <input type="text" id="Plname2" name="lastname_p2" placeholder="Apellido Paterno.."> &emsp;
+
+                <label for="Mlname2">Apellido Materno</label> 
+                <input type="text" id="Mlname2" name="lastname_m2" placeholder="Apellido Materno.."> &emsp;
+
+                <label for="adscrip2">Fiscalia/Autoridad</label> 
+                <input type="text" id="adscip2" name="adscipcion2" placeholder="Adscripcion..."> &emsp;
+
+                <label for="cg2">Cargo/Grado</label> 
+                <input type="text" id="cg2" name="cargo-grado2" placeholder="cargo/grado.."> &emsp; <br>
+                <br>
+                <br>
+                
+                <!--Sección Dos
+                    Primer Respondiente-->
+
+                 <!--Apartado 2.1 Datos de Identificación (firma nombre)-->
+
+                <!--Check box instituciones bla bla bla-->
+                
+                <input type="checkbox" id="GNcb" name="GNcb" value="radio">
+                <label for="GNcb"> Guardia Nacional</label>
+
+                <input type="checkbox" id="PFMcb" name="PFMcb" value="radio">
+                <label for="PFMcb">Policia Federal Ministerial</label> <br>
+
+                <!--check box restantes-->
+
+                <input type="checkbox" id="PMcb" name="PMcb" value="radio">
+                <label for="PMcb">Policia Ministerial</label>
+
+                <input type="checkbox" id="PMUcb" name="PMUcb" value="radio">
+                <label for="PMUcb">Policia Mando Unico</label>
+
+                <input type="checkbox" id="PEcb" name="PEcb" value="radio">
+                <label for="PEcb">Policia Estatal</label>
+
+                <input type="checkbox" id="PMuncb" name="PMuncb" value="radio">
+                <label for="PMuncb"> Policia Municipal</label>
+
+                <label for="OtAutcb">Otra autoridad</label> 
+                <input type="text" id="OtAutcb" name="OtAutcb" placeholder=" "> &emsp; <br>
+                <br>
+                <br>
+
+                <!--3era seccion del 2.1-->
+
+                <label for="Questn1">Cuál es su grado o cargo?</label> 
+                <input type="text" id="Questn1" name="Questn1" placeholder=" "> &emsp; <br>
+
+                <label for="Questn2">En que unidad arribo...?</label> 
+                <input type="text" id="Questn2" name="Questn2" placeholder=" "> &emsp;
+
+                <input type="checkbox" id="NAcb" name="NAcb" value="radio">
+                <label for="NAcb">No Aplica</label> <br>
+
+                <label for="Questn3">Arribó maś de un...?</label> 
+                <input type="checkbox" id="Q3cb" name="Q3cb" value="radio">
+                <label for="Q3cb">Sí</label>
+
+                <label for="Questn4"> Cuantos?</label> 
+                <input type="text" id="Questn4" name="Questn4" required maxlength="3" placeholder=" "> &emsp; 
+                
+                <input type="checkbox" id="Nocb_id" name="Nocb" value="radio">
+                <label for="Nocb">No</label>
+                <br>
+                <br>
+                <br>
+
+                <!--3. Conocimiento del hecho y bla bla bla-->
+                <!--3.1 bla bla bla-->
+                <h3 style = "font-family: 'Courier New', Courier, monospace;">Cómo se enteró del hecho?</h3>
+                 <!--check box-->
+
+                <input type="checkbox" id="PMcb" name="PMcb" value="radio">
+                <label for="PMcb">Denuncia</label>
+
+                <input type="checkbox" id="PMUcb" name="PMUcb" value="radio">
+                <label for="PMUcb">llamada de Emergencia</label>
+
+                <input type="checkbox" id="PEcb" name="PEcb" value="radio">
+                <label for="PEcb">Flagrancia</label>
+
+                <input type="checkbox" id="PMuncb" name="PMuncb" value="radio">
+                <label for="PMuncb">Descubrimiento</label>
+
+                <input type="checkbox" id="PMcb" name="PMcb" value="radio">
+                <label for="PMcb">Localización</label>
+
+                <input type="checkbox" id="PMUcb" name="PMUcb" value="radio">
+                <label for="PMUcb">Aportación</label>
+
+                <input type="checkbox" id="PEcb" name="PEcb" value="radio">
+                <label for="PEcb">Mandamiento Judicial</label>
+                <br>
+                <label for="911_id">911 No.</label> 
+                <input type="text" id="911_id" name="911" required maxlength="23" placeholder=" "> &emsp;
+                <a style="font-size: smaller;">solo en caso de contar con el</a> 
+                <br>
+                <br>
+                <br>
+
+                <!--3.2 fecha y  horas seguimiento de la actuación de la segur-->
+
+                <!--4. Lugar de la interv-->
+                <!--4.1 ubicación geografica-->
+                
+                <label for="txtcalle_id">Calle/Tramo carretero</label> &emsp;
+                <input type="text" id="txtcalle_id" name="calletramo" placeholder=" "> 
+                <br>
+                <label for="next_id">No.Exterior</label> &emsp;
+                <input type="text" id="next_id" name="numext" placeholder=" "> 
+
+                <label for="nint_id">No. Interior</label> &emsp;
+                <input type="text" id="nint_id" name="numint" placeholder=" ">
+
+                <label for="cp_id">Código Postal</label> &emsp;
+                <input type="text" id="cp_id" name="calletramo" required maxlength="5" placeholder=" ">
+                <br>
+                <label for="col_id">Colonia/Localidad</label> 
+                <input type="text" id="col_id" name="colonia" placeholder=" ">
+                <br>
+
+                <label for="mun_id">Municipio/Demarcación Territorial</label> 
+                <input type="text" id="mun_id" name="municipio" placeholder=" "> &emsp;
+
+                <label for="ef_id">Entidad Federativa</label> 
+                <input type="text" id="ef_id" name="entidad" placeholder=" "> &emsp;
+
+                <label for="ref_id">Refereencias</label> 
+                <input type="text" id="ref_id" name="referencia" placeholder=" ">
+                <br>
+                <br>
+                <!--segunda parte del 4.1-->
+                <h6>Anote las coordenadas geo...</h6>
+                <label for="latc_id">Latitud</label> 
+                <input type="text" id="latc_id" name="coordenada" required maxlength="2" placeholder=" "> <a>.</a>
+
+                <input type="text" id="latc_id2" name="coordenada" required maxlength="7" placeholder=" "> &emsp;
+                
+                <label for="lonc_id">Longitud</label> 
+                <input type="text" id="lonc_id" name="coordenada" required maxlength="2" placeholder=" "> <a>.</a>
+
+                <input type="text" id="lonc2_id" name="coordenada" required maxlength="7" placeholder=" ">
+
+                <!--Apartado 4.2-->
+                <label>Realizó la inspección del lugar?</label>
+                <input type="checkbox" id="PEcb" name="PEcb" value="radio">
+                <label for="PEcb">Mandamiento Judicial</label>
+
+
+
+                
+
+                <!--boton submit-->
+
+                  <div class="row">
+                      <input type="submit" value="submit">
+                  </div>
+            </form>
+        </div>
+
+        <!--Reloj-->
+       <!-- <div ng-app="app">
+            <div ng-controller="MainController">
+              <h1> 
+                <span class="l">Flex</span><span class="r">Calendar</span>
+              </h1>
+              <p>An Elegant Calendar Built With Angular.js</p>
+              <div class="wrapp">
+                <flex-calendar options="options" events="events"></flex-calendar>
+              </div>
+              <br />
+              <p>
+                <iframe src="https://ghbtns.com/github-btn.html?user=Russian60&repo=flex-calendar&type=star&count=true&size=large" frameborder="0" scrolling="0" width="115px" height="30px"></iframe>
+                
+                <iframe src="https://ghbtns.com/github-btn.html?user=Russian60&repo=flex-calendar&type=watch&count=true&size=large&v=2" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
+                
+                
+              </p>
+            </div>
+          </div> -->
+
+        
+
+
+    </body>
+</html>
